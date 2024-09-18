@@ -3081,7 +3081,7 @@ function replaceInUri(link, replacements, isRecovery) {
     case link.startsWith("hysteria://"):
       return replaceHysteria(link, replacements);
     case link.startsWith("hysteria2://"):
-      return replaceHysteria2(link, replacements);
+      return replaceHysteria2(link, replacements, isRecovery);
     case link.startsWith("tg://"):
       return replacetg(link, replacements, isRecovery);
     default:
@@ -3243,7 +3243,7 @@ function replaceHysteria(link, replacements) {
   replacements[randomDomain] = server;
   return link.replace(server, randomDomain);
 }
-function replaceHysteria2(link, replacements) {
+function replaceHysteria2(link, replacements, isRecovery) {
     const randomUUID = generateRandomUUID();
     const randomDomain = generateRandomStr(10) + ".com";
     const regexMatch = link.match(/(hysteria2):\/\/(.*)@(.*?):/);
